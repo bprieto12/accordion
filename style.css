@@ -1,0 +1,20 @@
+.transactions {
+	display: none;
+	height: 20em;
+	border-color: #DCDCDC;
+	border-style: solid;
+	border-width: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.mid-info {
+	padding: 10px 10px;
+	background-color: #F5F5F5;
+	border-radius: 0.5em;
+	margin-top: 0.75em;
+}
+
+.mid-info:hover {
+	background-color: #F0F0F0;
+}

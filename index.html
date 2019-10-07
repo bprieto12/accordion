@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+	<header>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</header>
+	<body>
+		<div class="container" id="root">
+		<!-- 	<div class="mid-info">
+				<div class="row mb-3" id="mid-preview">
+					<div class="col-md-3" id="mid-name">2018 Toyota Tundra</div>
+					<div class="col-md-3" id="mid-value-low">20,000</div>
+					<div class="col-md-3" id="mid-value-mid">22,000</div>
+					<div class="col-md-3" id="mid-value-mid">24,000</div>
+				</div>
+				<div id="transactions">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Date</th>
+								<th scope="col">Price</th>
+								<th scope="col">Grade</th>
+								<th scope="col">Mileage</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>10/2/2019</td>
+								<td>$10,100</td>
+								<td>4.2</td>
+								<td>100,000</td>
+							</tr>
+							<tr>
+								<td>10/3/2019</td>
+								<td>$12,100</td>
+								<td>3.5</td>
+								<td>80,000</td>
+							</tr>
+							<tr>
+								<td>10/1/2019</td>
+								<td>$12,200</td>
+								<td>4.0</td>
+								<td>50,000</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> -->
+			
+		</div>
+		<script>
+			// let prev = document.getElementById("mid-preview");
+			// prev.addEventListener("click", () => {
+			// 	let trans = document.getElementById("transactions");
+			// 	if (trans.style.display === "none") {
+			// 		trans.style.display = 'block';
+			// 	} else {
+			// 		trans.style.display = 'none';
+			// 	}
+			// });
+			let vehicles = {
+				"vehicles": [
+				{
+					"id": 1,
+					"year": 2018,
+					"make": "Toyota",
+					"model": "Tundra",
+					"trim": "SR",
+					"low_price": 22000,
+					"mid_price": 23000,
+					"high_price": 24000 
+				},
+				{
+					"id": 2,
+					"year": 2018,
+					"make": "Toyota",
+					"model": "Tundra",
+					"trim": "SR5",
+					"low_price": 23000,
+					"mid_price": 24000,
+					"high_price": 25000 
+				},
+				{
+					"id": 3,
+					"year": 2018,
+					"make": "Toyota",
+					"model": "Tundra",
+					"trim": "Limited",
+					"low_price": 24000,
+					"mid_price": 25000,
+					"high_price": 26000 
+				},
+				{
+					"id": 4,
+					"year": 2018,
+					"make": "Toyota",
+					"model": "Tundra",
+					"trim": "Platinum",
+					"low_price": 24000,
+					"mid_price": 25000,
+					"high_price": 26000 
+				}
+				]
+			};
+
+			
+			
+			let app = document.getElementById("root");
+
+			let title = document.createElement("h2");
+			title.innerHTML = "Vehicle Prices";
+
+			app.appendChild(title);
+
+			vehicles['vehicles'].forEach(vehicle => {
+				let mid_info = document.createElement("div");
+				mid_info.setAttribute("class", "mid-info");
+
+				app.appendChild(mid_info);
+
+				let mid_preview = document.createElement("div");
+				mid_preview.setAttribute("class", "row");
+				mid_preview.setAttribute("id", "mid-preview-" + vehicle.id);
+
+				mid_info.appendChild(mid_preview);
+
+				let mid_name = document.createElement("div");
+				mid_name.setAttribute("class", "col-md-3");
+				mid_name.setAttribute("id", "name-" + vehicle.id);
+				mid_name.innerHTML = vehicle.year + " " + vehicle.make + " " + vehicle.model + " " + vehicle.trim;
+
+				mid_preview.appendChild(mid_name);
+
+				let mid_price_low = document.createElement("div");
+				mid_price_low.setAttribute("class", "col-md-3");
+				mid_price_low.setAttribute("id", "price-low-" + vehicle.id);
+				mid_price_low.innerHTML = vehicle.low_price;
+
+				mid_preview.appendChild(mid_price_low);
+
+				let mid_price_mid = document.createElement("div");
+				mid_price_mid.setAttribute("class", "col-md-3");
+				mid_price_mid.setAttribute("id", "price-mid-" + vehicle.id);
+				mid_price_mid.innerHTML = vehicle.mid_price;
+
+				mid_preview.appendChild(mid_price_mid);
+
+				let mid_price_high = document.createElement("div");
+				mid_price_high.setAttribute("class", "col-md-3");
+				mid_price_high.setAttribute("id", "price-high-" + vehicle.id);
+				mid_price_high.innerHTML = vehicle.high_price;
+
+				mid_preview.appendChild(mid_price_high);
+
+				let transaction_container = document.createElement("div");
+				transaction_container.setAttribute("class", "transactions");
+
+				app.appendChild(transaction_container);
+
+				let trans_table = document.createElement("table");
+				trans_table.setAttribute("class", "table table-hover");
+
+				transaction_container.appendChild(trans_table);
+
+				let table_head = document.createElement("thead");
+				trans_table.appendChild(table_head);
+
+				let head_row = document.createElement("tr");
+				table_head.appendChild(head_row);
+
+				let date_header = document.createElement("th");
+				date_header.innerHTML = "Date";
+				date_header.setAttribute("scope", "col");
+				head_row.appendChild(date_header);
+
+				let price_header = document.createElement("th");
+				price_header.innerHTML = "Price";
+				price_header.setAttribute("scope", "col");
+				head_row.appendChild(price_header);
+
+				let grade_header = document.createElement("th");
+				grade_header.innerHTML = "Grade";
+				grade_header.setAttribute("scope", "col");
+				head_row.appendChild(grade_header);
+
+				let mileage_header = document.createElement("th");
+				mileage_header.innerHTML = "Mileage";
+				mileage_header.setAttribute("scope", "col");
+				head_row.appendChild(mileage_header);
+
+				let table_body = document.createElement("tbody");
+				trans_table.appendChild(table_body);
+
+				let transaction_1 = document.createElement("tr");
+				table_body.appendChild(transaction_1);
+
+				let d1 = document.createElement("td");
+				d1.innerHTML = "10/2/2019";
+				transaction_1.appendChild(d1);
+
+				let d2 = document.createElement("td");
+				d2.innerHTML = "$10,100";
+				transaction_1.appendChild(d2);
+
+				let d3 = document.createElement("td");
+				d3.innerHTML = "4.2";
+				transaction_1.appendChild(d3);
+
+				let d4 = document.createElement("td");
+				d4.innerHTML = "100,000";
+				transaction_1.appendChild(d4);
+
+				mid_info.addEventListener("click", () => {
+					if (transaction_container.style.display === "none") {
+						transaction_container.style.display = 'block';
+					} else {
+						transaction_container.style.display = 'none';
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
